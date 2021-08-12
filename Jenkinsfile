@@ -2,14 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build only fix branch') {
+	  when {
+	    branch "fix-*"
+	  }
             steps {
-                echo 'Building.. repo 1'
+                echo 'Building.. repo 1 only for branch fix'
             }
         }
-        stage('Test') {
+        stage('Build only Pull Request') {
+	  when {
+            branch 'PR-*' 
+	  } 
             steps {
-                echo 'Testing.. repo 1'
+                echo 'Building.. repo 1 only for PR'
             }
         }
         stage('Deploy') {
