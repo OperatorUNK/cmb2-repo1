@@ -18,6 +18,11 @@ pipeline {
                 echo 'Building.. repo 1 only for PR'
             }
         }
+	stage('Testing') {
+	    steps {
+                echo 'Testing.... repo 1'
+	    }
+	}    
         stage('Deploy') {
             steps {
                 echo 'Deploying.... repo 1'
